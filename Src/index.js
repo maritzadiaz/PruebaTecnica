@@ -15,3 +15,7 @@ Genero.belongsToMany(PeliculaSerie, { through: PeliculaSerieGenero });
 
 // Sincroniza los modelos con la base de datos
 sequelize.sync();
+
+const characterRoutes = require('./routes/characterRoutes');
+app.use(characterRoutes);
+

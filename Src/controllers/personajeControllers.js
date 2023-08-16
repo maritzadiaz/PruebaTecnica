@@ -2,21 +2,21 @@
 
 const db = require('../models');
 
-exports.getAllCharacters = async (req, res) => {
+exports.getAllPersonaje = async (req, res) => {
     try {
-        const characters = await db.Personaje.findAll({
+        const personaje = await db.Personaje.findAll({
             attributes: ['imagen', 'nombre'],
         });
-        res.json(characters);
+        res.json(personaje);
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener los personajes' });
     }
 };
 
-exports.getCharacterById = async (req, res) => {
-    const characterId = req.params.id;
+exports.getpersonajeyId = async (req, res) => {
+    const persnajeId = req.params.id;
     try {
-        const character = await db.Personaje.findByPk(characterId, {
+        const personaje = await db.Personaje.findByPk(personajeId, {
             include: [
                 {
                     model: db.Pelicula,
@@ -24,19 +24,19 @@ exports.getCharacterById = async (req, res) => {
                 },
             ],
         });
-        if (!character) {
+        if (!personaje) {
             return res.status(404).json({ message: 'Personaje no encontrado' });
         }
-        res.json(character);
+        res.json(personaje);
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener el personaje' });
     }
 };
 
-exports.getCharacterById = async (req, res) => {
-    const characterId = req.params.id;
+exports.getPersonajeById = async (req, res) => {
+    const personajeId = req.params.id;
     try {
-        const character = await db.Personaje.findByPk(characterId, {
+        const personaje = await db.Personaje.findByPk(personajeId, {
             include: [
                 {
                     model: db.Pelicula,
@@ -44,10 +44,10 @@ exports.getCharacterById = async (req, res) => {
                 },
             ],
         });
-        if (!character) {
+        if (!personaje) {
             return res.status(404).json({ message: 'Personaje no encontrado' });
         }
-        res.json(character);
+        res.json(personaje);
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener el personaje' });
     }
